@@ -45,7 +45,7 @@ load_dotenv()
 
 def get_kafka_topic() -> str:
     """Fetch Kafka topic from environment or use default."""
-    topic = os.getenv("SMOKER_TOPIC", "unknown_topic")
+    topic = os.getenv("SMOKER_TOPIC", "csv_topic")
     logger.info(f"Kafka topic: {topic}")
     return topic
 
