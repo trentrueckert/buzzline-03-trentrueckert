@@ -1,5 +1,5 @@
 """
-csv_consumer_case.py
+csv_consumer_rueckert.py
 
 Consume json messages from a Kafka topic and process them.
 
@@ -42,14 +42,14 @@ load_dotenv()
 
 def get_kafka_topic() -> str:
     """Fetch Kafka topic from environment or use default."""
-    topic = os.getenv("SMOKER_TOPIC", "unknown_topic")
+    topic = os.getenv("SMOKER_TOPIC", "csv_topic")
     logger.info(f"Kafka topic: {topic}")
     return topic
 
 
 def get_kafka_consumer_group_id() -> str:
     """Fetch Kafka consumer group id from environment or use default."""
-    group_id: str = os.getenv("SMOKER_CONSUMER_GROUP_ID", "default_group")
+    group_id: str = os.getenv("SMOKER_CONSUMER_GROUP_ID", "csv_group")
     logger.info(f"Kafka consumer group id: {group_id}")
     return group_id
 
