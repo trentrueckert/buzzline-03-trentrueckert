@@ -1,5 +1,5 @@
 """
-json_producer_case.py
+json_producer_rueckert.py
 
 Stream JSON data to a Kafka topic.
 
@@ -21,6 +21,8 @@ import sys
 import time
 import pathlib  # work with file paths
 import json  # work with JSON data
+import random
+from datetime import datetime
 
 # Import external packages
 from dotenv import load_dotenv
@@ -82,41 +84,29 @@ logger.info(f"Data file: {DATA_FILE}")
 
 def generate_messages(file_path: pathlib.Path):
     """
-    Read from a JSON file and yield them one by one, continuously.
-
-    Args:
-        file_path (pathlib.Path): Path to the JSON file.
-
-    Yields:
-        dict: A dictionary containing the JSON data.
+    Yield custom JSON message with dynamic sentences continuously.
     """
+    message_id = 1
+    golfers = ["Scottie", "Rory", "Bryson", "Tiger"]
+    positions = ["bunker", "fairway", "rough", "green", "fringe"]
+    
     while True:
-        try:
-            logger.info(f"Opening data file in read mode: {DATA_FILE}")
-            with open(DATA_FILE, "r") as json_file:
-                logger.info(f"Reading data from file: {DATA_FILE}")
-
-                # Load the JSON file as a list of dictionaries
-                json_data: list = json.load(json_file)
-
-                if not isinstance(json_data, list):
-                    raise ValueError(
-                        f"Expected a list of JSON objects, got {type(json_data)}."
-                    )
-
-                # Iterate over the entries in the JSON file
-                for buzz_entry in json_data:
-                    logger.debug(f"Generated JSON: {buzz_entry}")
-                    yield buzz_entry
-        except FileNotFoundError:
-            logger.error(f"File not found: {file_path}. Exiting.")
-            sys.exit(1)
-        except json.JSONDecodeError as e:
-            logger.error(f"Invalid JSON format in file: {file_path}. Error: {e}")
-            sys.exit(2)
-        except Exception as e:
-            logger.error(f"Unexpected error in message generation: {e}")
-            sys.exit(3)
+        # Create a dynamic message with custom sentences
+        golfer = random.choice(golfers)
+        position = random.choice(positions)
+        timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        
+        message = {
+            "message": f"Message {message_id}: The shot for {golfer} is currently from the {position}.",
+            "golfer": golfer,
+            "timestamp": timestamp,
+            "position": position
+        }
+        
+        logger.debug(f"Generated JSON: {message}")
+        yield message
+        message_id += 1
+        time.sleep(1)  # Simulate interval
 
 
 #####################################
@@ -128,9 +118,6 @@ def main():
     """
     Main entry point for this producer.
 
-    - Ensures the Kafka topic exists.
-    - Creates a Kafka producer using the `create_kafka_producer` utility.
-    - Streams generated JSON messages to the Kafka topic.
     """
 
     logger.info("START producer.")
@@ -139,11 +126,6 @@ def main():
     # fetch .env content
     topic = get_kafka_topic()
     interval_secs = get_message_interval()
-
-    # Verify the data file exists
-    if not DATA_FILE.exists():
-        logger.error(f"Data file not found: {DATA_FILE}. Exiting.")
-        sys.exit(1)
 
     # Create the Kafka producer
     producer = create_kafka_producer(
@@ -164,7 +146,7 @@ def main():
     # Generate and send messages
     logger.info(f"Starting message production to topic '{topic}'...")
     try:
-        for message_dict in generate_messages(DATA_FILE):
+        for message_dict in generate_messages():
             # Send message directly as a dictionary (producer handles serialization)
             producer.send(topic, value=message_dict)
             logger.info(f"Sent message to topic '{topic}': {message_dict}")
