@@ -65,7 +65,7 @@ def get_message_interval() -> int:
 #####################################
 
 
-def generate_messages(file_path: pathlib.Path):
+def generate_messages():
     """
     Yield custom JSON message with dynamic sentences continuously.
     """
