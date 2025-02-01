@@ -61,23 +61,6 @@ def get_message_interval() -> int:
 
 
 #####################################
-# Set up Paths
-#####################################
-
-# The parent directory of this file is its folder.
-# Go up one more parent level to get the project root.
-PROJECT_ROOT = pathlib.Path(__file__).parent.parent
-logger.info(f"Project root: {PROJECT_ROOT}")
-
-# Set directory where data is stored
-DATA_FOLDER: pathlib.Path = PROJECT_ROOT.joinpath("data")
-logger.info(f"Data folder: {DATA_FOLDER}")
-
-# Set the name of the data file
-DATA_FILE: pathlib.Path = DATA_FOLDER.joinpath("buzz.json")
-logger.info(f"Data file: {DATA_FILE}")
-
-#####################################
 # Message Generator
 #####################################
 
