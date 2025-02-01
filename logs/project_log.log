@@ -403,3 +403,157 @@
 2025-01-31 22:46:16.282 | ERROR    | __main__:main:140 - Error during message production: generate_messages() missing 1 required positional argument: 'file_path'
 2025-01-31 22:46:16.283 | INFO     | __main__:main:143 - Kafka producer closed.
 2025-01-31 22:46:16.284 | INFO     | __main__:main:145 - END producer.
+2025-01-31 22:50:36.812 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 22:50:36.817 | INFO     | __main__:main:106 - START producer.
+2025-01-31 22:50:36.817 | INFO     | utils.utils_producer:get_zookeeper_address:57 - Zookeeper address: localhost:2181
+2025-01-31 22:50:36.829 | INFO     | utils.utils_producer:check_zookeeper_service_is_ready:79 - Zookeeper is ready at localhost:2181.
+2025-01-31 22:50:36.830 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:50:37.201 | INFO     | utils.utils_producer:check_kafka_service_is_ready:98 - Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 0, 'host': 'localhost', 'port': 9092, 'rack': None}], 'cluster_id': 'QXVSIpl_SeSUW3fVwL6xhQ', 'controller_id': 0}
+2025-01-31 22:50:37.202 | INFO     | __main__:get_kafka_topic:52 - Kafka topic: buzzline_json
+2025-01-31 22:50:37.203 | INFO     | __main__:get_message_interval:59 - Message interval: 1 seconds
+2025-01-31 22:50:37.203 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:50:37.204 | INFO     | utils.utils_producer:create_kafka_producer:146 - Connecting to Kafka broker at localhost:9092...
+2025-01-31 22:50:37.313 | INFO     | utils.utils_producer:create_kafka_producer:151 - Kafka producer successfully created.
+2025-01-31 22:50:37.313 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:50:37.638 | INFO     | utils.utils_producer:create_kafka_topic:172 - Topic 'buzzline_json' already exists. Clearing it out...
+2025-01-31 22:50:37.638 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:50:38.001 | ERROR    | utils.utils_producer:clear_kafka_topic:235 - Error managing retention for topic 'buzzline_json': list indices must be integers or slices, not ConfigResource
+2025-01-31 22:50:38.003 | INFO     | __main__:main:124 - Kafka topic 'buzzline_json' is ready.
+2025-01-31 22:50:38.004 | INFO     | __main__:main:130 - Starting message production to topic 'buzzline_json'...
+2025-01-31 22:50:38.014 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 1: The shot for Tiger is currently from the fringe.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:38Z', 'position': 'fringe'}
+2025-01-31 22:50:40.017 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 2: The shot for Tiger is currently from the fringe.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:40Z', 'position': 'fringe'}
+2025-01-31 22:50:42.019 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 3: The shot for Bryson is currently from the rough.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:50:42Z', 'position': 'rough'}
+2025-01-31 22:50:44.022 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 4: The shot for Tiger is currently from the green.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:44Z', 'position': 'green'}
+2025-01-31 22:50:46.025 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 5: The shot for Rory is currently from the bunker.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:50:46Z', 'position': 'bunker'}
+2025-01-31 22:50:47.086 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 22:50:47.091 | INFO     | __main__:main:128 - START consumer.
+2025-01-31 22:50:47.091 | INFO     | __main__:get_kafka_topic:46 - Kafka topic: buzzline_json
+2025-01-31 22:50:47.091 | INFO     | __main__:get_kafka_consumer_group_id:53 - Kafka consumer group id: buzz_group
+2025-01-31 22:50:47.091 | INFO     | __main__:main:133 - Consumer: Topic 'buzzline_json' and group 'buzz_group'...
+2025-01-31 22:50:47.092 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:50:47.092 | INFO     | utils.utils_consumer:create_kafka_consumer:44 - Creating Kafka consumer. Topic='buzzline_json' and group ID='buzz_group'.
+2025-01-31 22:50:47.208 | INFO     | utils.utils_consumer:create_kafka_consumer:59 - Kafka consumer created successfully.
+2025-01-31 22:50:47.209 | INFO     | __main__:main:139 - Polling messages from topic 'buzzline_json'...
+2025-01-31 22:50:48.027 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 6: The shot for Tiger is currently from the bunker.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:48Z', 'position': 'bunker'}
+2025-01-31 22:50:48.651 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 1: The shot for Tiger is currently from the fringe.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:38Z', 'position': 'fringe'}
+2025-01-31 22:50:48.652 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 2: The shot for Tiger is currently from the fringe.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:40Z', 'position': 'fringe'}
+2025-01-31 22:50:48.652 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 3: The shot for Bryson is currently from the rough.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:50:42Z', 'position': 'rough'}
+2025-01-31 22:50:48.653 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 4: The shot for Tiger is currently from the green.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:44Z', 'position': 'green'}
+2025-01-31 22:50:48.654 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 5: The shot for Rory is currently from the bunker.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:50:46Z', 'position': 'bunker'}
+2025-01-31 22:50:48.654 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 6: The shot for Tiger is currently from the bunker.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:48Z', 'position': 'bunker'}
+2025-01-31 22:50:50.031 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 7: The shot for Scottie is currently from the green.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:50:50Z', 'position': 'green'}
+2025-01-31 22:50:50.037 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 7: The shot for Scottie is currently from the green.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:50:50Z', 'position': 'green'}
+2025-01-31 22:50:52.035 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 8: The shot for Scottie is currently from the green.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:50:52Z', 'position': 'green'}
+2025-01-31 22:50:52.040 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 8: The shot for Scottie is currently from the green.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:50:52Z', 'position': 'green'}
+2025-01-31 22:50:54.037 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 9: The shot for Bryson is currently from the fairway.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:50:54Z', 'position': 'fairway'}
+2025-01-31 22:50:54.043 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 9: The shot for Bryson is currently from the fairway.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:50:54Z', 'position': 'fairway'}
+2025-01-31 22:50:56.041 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 10: The shot for Bryson is currently from the green.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:50:56Z', 'position': 'green'}
+2025-01-31 22:50:56.047 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 10: The shot for Bryson is currently from the green.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:50:56Z', 'position': 'green'}
+2025-01-31 22:50:58.044 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 11: The shot for Tiger is currently from the rough.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:58Z', 'position': 'rough'}
+2025-01-31 22:50:58.050 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 11: The shot for Tiger is currently from the rough.', 'golfer': 'Tiger', 'timestamp': '2025-02-01T04:50:58Z', 'position': 'rough'}
+2025-01-31 22:51:00.047 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 12: The shot for Rory is currently from the bunker.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:00Z', 'position': 'bunker'}
+2025-01-31 22:51:00.052 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 12: The shot for Rory is currently from the bunker.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:00Z', 'position': 'bunker'}
+2025-01-31 22:51:02.049 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 13: The shot for Rory is currently from the fringe.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:02Z', 'position': 'fringe'}
+2025-01-31 22:51:02.055 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 13: The shot for Rory is currently from the fringe.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:02Z', 'position': 'fringe'}
+2025-01-31 22:51:04.054 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 14: The shot for Rory is currently from the fairway.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:04Z', 'position': 'fairway'}
+2025-01-31 22:51:04.061 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 14: The shot for Rory is currently from the fairway.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:04Z', 'position': 'fairway'}
+2025-01-31 22:51:06.057 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 15: The shot for Scottie is currently from the green.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:51:06Z', 'position': 'green'}
+2025-01-31 22:51:06.064 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 15: The shot for Scottie is currently from the green.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:51:06Z', 'position': 'green'}
+2025-01-31 22:51:08.060 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 16: The shot for Rory is currently from the bunker.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:08Z', 'position': 'bunker'}
+2025-01-31 22:51:08.066 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 16: The shot for Rory is currently from the bunker.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:08Z', 'position': 'bunker'}
+2025-01-31 22:51:10.064 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 17: The shot for Scottie is currently from the fairway.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:51:10Z', 'position': 'fairway'}
+2025-01-31 22:51:10.073 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 17: The shot for Scottie is currently from the fairway.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:51:10Z', 'position': 'fairway'}
+2025-01-31 22:51:12.068 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 18: The shot for Scottie is currently from the fringe.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:51:12Z', 'position': 'fringe'}
+2025-01-31 22:51:12.072 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 18: The shot for Scottie is currently from the fringe.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:51:12Z', 'position': 'fringe'}
+2025-01-31 22:51:14.069 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 19: The shot for Rory is currently from the fairway.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:14Z', 'position': 'fairway'}
+2025-01-31 22:51:14.073 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 19: The shot for Rory is currently from the fairway.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:14Z', 'position': 'fairway'}
+2025-01-31 22:51:16.072 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 20: The shot for Rory is currently from the rough.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:16Z', 'position': 'rough'}
+2025-01-31 22:51:16.081 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 20: The shot for Rory is currently from the rough.', 'golfer': 'Rory', 'timestamp': '2025-02-01T04:51:16Z', 'position': 'rough'}
+2025-01-31 22:51:18.077 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 21: The shot for Bryson is currently from the fringe.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:51:18Z', 'position': 'fringe'}
+2025-01-31 22:51:18.083 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 21: The shot for Bryson is currently from the fringe.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:51:18Z', 'position': 'fringe'}
+2025-01-31 22:51:20.080 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 22: The shot for Scottie is currently from the fringe.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:51:20Z', 'position': 'fringe'}
+2025-01-31 22:51:20.086 | INFO     | __main__:process_message:93 - Processed JSON message: {'message': 'Message 22: The shot for Scottie is currently from the fringe.', 'golfer': 'Scottie', 'timestamp': '2025-02-01T04:51:20Z', 'position': 'fringe'}
+2025-01-31 22:51:22.083 | INFO     | __main__:main:135 - Sent message to topic 'buzzline_json': {'message': 'Message 23: The shot for Bryson is currently from the fairway.', 'golfer': 'Bryson', 'timestamp': '2025-02-01T04:51:22Z', 'position': 'fairway'}
+2025-01-31 22:54:28.876 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 22:54:28.879 | INFO     | __main__:<module>:67 - Project root: C:\Users\trent\Projects\buzzline-03-trentrueckert
+2025-01-31 22:54:28.880 | INFO     | __main__:<module>:71 - Data folder: C:\Users\trent\Projects\buzzline-03-trentrueckert\data
+2025-01-31 22:54:28.880 | INFO     | __main__:<module>:75 - Data file: C:\Users\trent\Projects\buzzline-03-trentrueckert\data\smoker_temps.csv
+2025-01-31 22:54:28.880 | INFO     | __main__:main:138 - START producer.
+2025-01-31 22:54:28.880 | INFO     | utils.utils_producer:get_zookeeper_address:57 - Zookeeper address: localhost:2181
+2025-01-31 22:54:28.891 | INFO     | utils.utils_producer:check_zookeeper_service_is_ready:79 - Zookeeper is ready at localhost:2181.
+2025-01-31 22:54:28.892 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:54:29.235 | INFO     | utils.utils_producer:check_kafka_service_is_ready:98 - Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 0, 'host': 'localhost', 'port': 9092, 'rack': None}], 'cluster_id': 'QXVSIpl_SeSUW3fVwL6xhQ', 'controller_id': 0}
+2025-01-31 22:54:29.237 | INFO     | __main__:get_kafka_topic:49 - Kafka topic: smoker_csv
+2025-01-31 22:54:29.237 | INFO     | __main__:get_message_interval:56 - Message interval: 5 seconds
+2025-01-31 22:54:29.246 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:54:29.246 | INFO     | utils.utils_producer:create_kafka_producer:146 - Connecting to Kafka broker at localhost:9092...
+2025-01-31 22:54:29.356 | INFO     | utils.utils_producer:create_kafka_producer:151 - Kafka producer successfully created.
+2025-01-31 22:54:29.357 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:54:29.693 | INFO     | utils.utils_producer:create_kafka_topic:176 - Creating 'smoker_csv'.
+2025-01-31 22:54:29.783 | INFO     | utils.utils_producer:create_kafka_topic:181 - Topic 'smoker_csv' created successfully.
+2025-01-31 22:54:29.784 | INFO     | __main__:main:161 - Kafka topic 'smoker_csv' is ready.
+2025-01-31 22:54:29.785 | INFO     | __main__:main:167 - Starting message production to topic 'smoker_csv'...
+2025-01-31 22:54:29.785 | INFO     | __main__:generate_messages:94 - Opening data file in read mode: C:\Users\trent\Projects\buzzline-03-trentrueckert\data\smoker_temps.csv
+2025-01-31 22:54:29.807 | INFO     | __main__:generate_messages:98 - Loaded CSV data into DataFrame.
+2025-01-31 22:54:29.819 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:54:29', 'temperature': '70.4 C', 'sensor_status': 'active'}
+2025-01-31 22:54:34.823 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:54:34', 'temperature': '70.8 C', 'sensor_status': 'active'}
+2025-01-31 22:54:37.710 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-31 22:54:37.715 | INFO     | __main__:main:162 - START consumer.
+2025-01-31 22:54:37.716 | INFO     | __main__:get_kafka_topic:46 - Kafka topic: smoker_csv
+2025-01-31 22:54:37.716 | INFO     | __main__:get_kafka_consumer_group_id:53 - Kafka consumer group id: smoker_group
+2025-01-31 22:54:37.716 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:54:37.717 | INFO     | __main__:main:168 - Consumer: Topic 'smoker_csv' and group 'smoker_group'...
+2025-01-31 22:54:37.717 | INFO     | __main__:main:169 - Rolling window size: 10
+2025-01-31 22:54:37.717 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-31 22:54:37.718 | INFO     | utils.utils_consumer:create_kafka_consumer:44 - Creating Kafka consumer. Topic='smoker_csv' and group ID='smoker_group'.
+2025-01-31 22:54:37.843 | INFO     | utils.utils_consumer:create_kafka_consumer:59 - Kafka consumer created successfully.
+2025-01-31 22:54:37.843 | INFO     | __main__:main:177 - Polling messages from topic 'smoker_csv'...
+2025-01-31 22:54:38.090 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:54:29', 'temperature': '70.4 C', 'sensor_status': 'active'}
+2025-01-31 22:54:38.091 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:54:38.092 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:54:34', 'temperature': '70.8 C', 'sensor_status': 'active'}
+2025-01-31 22:54:38.093 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:54:39.828 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:54:39', 'temperature': '71.2 C', 'sensor_status': 'active'}
+2025-01-31 22:54:39.833 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:54:39', 'temperature': '71.2 C', 'sensor_status': 'active'}
+2025-01-31 22:54:39.833 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:54:44.831 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:54:44', 'temperature': '71.6 C', 'sensor_status': 'active'}
+2025-01-31 22:54:44.837 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:54:44', 'temperature': '71.6 C', 'sensor_status': 'active'}
+2025-01-31 22:54:44.837 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:54:49.834 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:54:49', 'temperature': '72.0 C', 'sensor_status': 'active'}
+2025-01-31 22:54:49.841 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:54:49', 'temperature': '72.0 C', 'sensor_status': 'active'}
+2025-01-31 22:54:49.841 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:54:54.838 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:54:54', 'temperature': '72.4 C', 'sensor_status': 'active'}
+2025-01-31 22:54:54.844 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:54:54', 'temperature': '72.4 C', 'sensor_status': 'active'}
+2025-01-31 22:54:54.844 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:54:59.841 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:54:59', 'temperature': '72.8 C', 'sensor_status': 'active'}
+2025-01-31 22:54:59.846 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:54:59', 'temperature': '72.8 C', 'sensor_status': 'active'}
+2025-01-31 22:54:59.846 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:04.843 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:55:04', 'temperature': '73.2 C', 'sensor_status': 'active'}
+2025-01-31 22:55:04.849 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:55:04', 'temperature': '73.2 C', 'sensor_status': 'active'}
+2025-01-31 22:55:04.849 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:09.846 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:55:09', 'temperature': '73.6 C', 'sensor_status': 'active'}
+2025-01-31 22:55:09.853 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:55:09', 'temperature': '73.6 C', 'sensor_status': 'active'}
+2025-01-31 22:55:09.854 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:14.851 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:55:14', 'temperature': '74.0 C', 'sensor_status': 'active'}
+2025-01-31 22:55:14.856 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:55:14', 'temperature': '74.0 C', 'sensor_status': 'active'}
+2025-01-31 22:55:14.857 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:14.857 | ERROR    | __main__:process_message:146 - Error processing message '{"timestamp": "2025-02-01 04:55:14", "temperature": "74.0 C", "sensor_status": "active"}': unsupported operand type(s) for -: 'str' and 'str'
+2025-01-31 22:55:19.855 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:55:19', 'temperature': '74.4 C', 'sensor_status': 'active'}
+2025-01-31 22:55:19.860 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:55:19', 'temperature': '74.4 C', 'sensor_status': 'active'}
+2025-01-31 22:55:19.860 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:19.861 | ERROR    | __main__:process_message:146 - Error processing message '{"timestamp": "2025-02-01 04:55:19", "temperature": "74.4 C", "sensor_status": "active"}': unsupported operand type(s) for -: 'str' and 'str'
+2025-01-31 22:55:24.857 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:55:24', 'temperature': '74.8 C', 'sensor_status': 'active'}
+2025-01-31 22:55:24.863 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:55:24', 'temperature': '74.8 C', 'sensor_status': 'active'}
+2025-01-31 22:55:24.863 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:24.864 | ERROR    | __main__:process_message:146 - Error processing message '{"timestamp": "2025-02-01 04:55:24", "temperature": "74.8 C", "sensor_status": "active"}': unsupported operand type(s) for -: 'str' and 'str'
+2025-01-31 22:55:29.860 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:55:29', 'temperature': '75.2 C', 'sensor_status': 'active'}
+2025-01-31 22:55:29.867 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:55:29', 'temperature': '75.2 C', 'sensor_status': 'active'}
+2025-01-31 22:55:29.868 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:29.868 | ERROR    | __main__:process_message:146 - Error processing message '{"timestamp": "2025-02-01 04:55:29", "temperature": "75.2 C", "sensor_status": "active"}': unsupported operand type(s) for -: 'str' and 'str'
+2025-01-31 22:55:34.863 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:55:34', 'temperature': '75.6 C', 'sensor_status': 'active'}
+2025-01-31 22:55:34.867 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:55:34', 'temperature': '75.6 C', 'sensor_status': 'active'}
+2025-01-31 22:55:34.868 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:34.868 | ERROR    | __main__:process_message:146 - Error processing message '{"timestamp": "2025-02-01 04:55:34", "temperature": "75.6 C", "sensor_status": "active"}': unsupported operand type(s) for -: 'str' and 'str'
+2025-01-31 22:55:39.865 | INFO     | __main__:main:171 - Sent message to topic 'smoker_csv': {'timestamp': '2025-02-01 04:55:39', 'temperature': '76.0 C', 'sensor_status': 'active'}
+2025-01-31 22:55:39.878 | INFO     | __main__:process_message:127 - Processed JSON message: {'timestamp': '2025-02-01 04:55:39', 'temperature': '76.0 C', 'sensor_status': 'active'}
+2025-01-31 22:55:39.880 | INFO     | __main__:get_rolling_window_size:67 - Rolling window size: 10
+2025-01-31 22:55:39.880 | ERROR    | __main__:process_message:146 - Error processing message '{"timestamp": "2025-02-01 04:55:39", "temperature": "76.0 C", "sensor_status": "active"}': unsupported operand type(s) for -: 'str' and 'str'
