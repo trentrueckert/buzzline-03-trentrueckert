@@ -19,6 +19,7 @@ import pathlib  # work with file paths
 import csv  # handle CSV data
 import json  # work with JSON data
 from datetime import datetime  # work with timestamps
+import pandas as pd
 
 # Import external packages
 from dotenv import load_dotenv
@@ -91,24 +92,27 @@ def generate_messages(file_path: pathlib.Path):
     while True:
         try:
             logger.info(f"Opening data file in read mode: {DATA_FILE}")
-            with open(DATA_FILE, "r") as csv_file:
-                logger.info(f"Reading data from file: {DATA_FILE}")
 
-                csv_reader = csv.DictReader(csv_file)
-                for row in csv_reader:
-                    # Ensure required fields are present
-                    if "temperature" not in row:
-                        logger.error(f"Missing 'temperature' column in row: {row}")
-                        continue
+            # Use pandas to read the CSV file
+            df = pd.read_csv(DATA_FILE)
+            logger.info(f"Loaded CSV data into DataFrame.")
 
-                    # Generate a timestamp and prepare the message
-                    current_timestamp = datetime.utcnow().isoformat()
-                    message = {
-                        "timestamp": current_timestamp,
-                        "temperature": float(row["temperature"]),
-                    }
-                    logger.debug(f"Generated message: {message}")
-                    yield message
+            for index, row in df.iterrows():
+                # Ensure required fields are present
+                if "temperature" not in row:
+                    logger.error(f"Missing 'temperature' column in row: {row}")
+                    continue
+
+                # Custom message format (simple change)
+                message = {
+                    "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+                    "temperature": f"{row['temperature']} C",  # Added Celsius
+                    "sensor_status": "active"  # A simple custom field added
+                }
+
+                logger.debug(f"Generated message: {message}")
+                yield message
+
         except FileNotFoundError:
             logger.error(f"File not found: {file_path}. Exiting.")
             sys.exit(1)
@@ -118,7 +122,7 @@ def generate_messages(file_path: pathlib.Path):
 
 
 #####################################
-# Define main function for this module.
+# Define main function for this module
 #####################################
 
 
