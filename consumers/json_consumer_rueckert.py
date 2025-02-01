@@ -1,5 +1,5 @@
 """
-json_consumer_case.py
+json_consumer_rueckert.py
 
 Consume json messages from a Kafka topic and process them.
 
@@ -83,29 +83,36 @@ def process_message(message: str) -> None:
         logger.debug(f"Raw message: {message}")
 
         # Parse the JSON string into a Python dictionary
-        message_dict: dict = json.loads(message)
+        data = json.loads(message)
+        message_content = data.get("message")
+        golfer = data.get("golfer")
+        position = data.get("position")
+        timestamp = data.get("timestamp")
 
         # Ensure the processed JSON is logged for debugging
-        logger.info(f"Processed JSON message: {message_dict}")
+        logger.info(f"Processed JSON message: {data}")
 
-        # Ensure it's a dictionary before accessing fields
-        if isinstance(message_dict, dict):
-            # Extract the 'author' field from the Python dictionary
-            author = message_dict.get("author", "unknown")
-            logger.info(f"Message received from author: {author}")
+        # Ensure required fields are present
+        if not all([message_content, golfer, position, timestamp]):
+            logger.error(f"Invalid message format: {message}")
+            return
+        
+        # Real-time analytics: Alert on status patterns
+        if "completed" in position.lower():
+            logger.info(f"ALERT: The process for {golfer} has completed at {timestamp}.")
+        
+        # Example of detecting a specific pattern (status change to 'failed')
+        if "failed" in position.lower():
+            logger.error(f"ALERT: The process for {golfer} has failed at {timestamp}.")
 
-            # Increment the count for the author
-            author_counts[author] += 1
-
-            # Log the updated counts
-            logger.info(f"Updated author counts: {dict(author_counts)}")
-        else:
-            logger.error(f"Expected a dictionary but got: {type(message_dict)}")
-
-    except json.JSONDecodeError:
-        logger.error(f"Invalid JSON message: {message}")
+        # Example of time-based alerting
+        if "urgent" in message_content.lower():
+            logger.warning(f"URGENT ALERT: Message from {golfer} at {timestamp}: {message_content}")
+        
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON decoding error for message '{message}': {e}")
     except Exception as e:
-        logger.error(f"Error processing message: {e}")
+        logger.error(f"Error processing message '{message}': {e}")
 
 
 #####################################
@@ -117,9 +124,6 @@ def main() -> None:
     """
     Main entry point for the consumer.
 
-    - Reads the Kafka topic name and consumer group ID from environment variables.
-    - Creates a Kafka consumer using the `create_kafka_consumer` utility.
-    - Performs analytics on messages from the Kafka topic.
     """
     logger.info("START consumer.")
 
